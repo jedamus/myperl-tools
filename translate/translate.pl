@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
+# modifiziert Montag, 17. August 2015 11:21 von Leander Jedamus
 # modifiziert Mittwoch, 22. Juli 2015 17:23 von Leander Jedamus
 # modifiziert Dienstag, 23. Juni 2015 16:04 von Leander Jedamus
 # modifiziert Montag, 25. Februar 2013 11:11 von Leander Jedamus
@@ -16,7 +17,7 @@ use vars qw($opt_file $opt_project $opt_version);
 use Getopt::Long;
 
 my $author = "Leander Jedamus";
-my $email = "ljedamus\@gmail.com";
+my $email = "ljedamus\@testmail.com";
 my $year = `date +'%Y'`;
 chomp $year;
 my $transdir = "translate";
