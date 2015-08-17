@@ -1,0 +1,260 @@
+# ./mycopy.pl.
+# Copyright (C) 2012 Leander Jedamus
+# This file is distributed under the same license as the ./mycopy.pl package.
+# ljedamus@gmail.com, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ./mycopy.pl 1.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-21 07:36+0100\n"
+"PO-Revision-Date: 2012-11-14 16:20+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: mycopy.pl:109
+msgid "usage:"
+msgstr "Benutzung:"
+
+#: mycopy.pl:110
+msgid "this text"
+msgstr "dieser Text"
+
+#: mycopy.pl:111
+msgid "only try, do not copy"
+msgstr "Nur versuchen, nicht kopieren"
+
+#: mycopy.pl:112
+msgid "set warnings"
+msgstr "setze Warnungen"
+
+#: mycopy.pl:113
+msgid "set debug information and warnings"
+msgstr "setze Debug-Informationen und Warnungen"
+
+#: mycopy.pl:194
+#, perl-format
+msgid "Creating dir %s"
+msgstr "Erzeuge Verzeichnis %s"
+
+#: mycopy.pl:214
+#, perl-format
+msgid "%s already exists"
+msgstr "%s existiert bereits"
+
+#: mycopy.pl:222
+#, perl-format
+msgid "%s is newer than %s"
+msgstr "%s ist neuer als %s"
+
+#: mycopy.pl:227
+#, perl-format
+msgid "%s is identical to %s"
+msgstr "%s is identisch mit %s"
+
+#: mycopy.pl:238 mycopy.pl:270
+#, perl-format
+msgid "%s is newer than stamp"
+msgstr "%s ist neuer als stempel"
+
+#: mycopy.pl:246 mycopy.pl:278
+#, perl-format
+msgid "%s is not newer than stamp"
+msgstr "%s ist nicht neuer als stempel"
+
+#: mycopy.pl:252
+#, perl-format
+msgid "%s is newer"
+msgstr "%s ist neuer"
+
+#: mycopy.pl:259
+#, perl-format
+msgid "let %s unchanged"
+msgstr "lasse %s unverändert"
+
+#: mycopy.pl:284
+#, perl-format
+msgid "%s does not exist"
+msgstr "%s existiert nicht"
+
+#: mycopy.pl:293
+#, perl-format
+msgid "I copy %s from %s to %s"
+msgstr "Ich kopiere %s von %s nach %s"
+
+#: mycopy.pl:303
+#, perl-format
+msgid "set ret to %s"
+msgstr "setze ret auf %s"
+
+#: mycopy.pl:304
+#, perl-format
+msgid "set retstamp to %s"
+msgstr "setze restamp auf %s"
+
+#: mycopy.pl:309
+#, perl-format
+msgid "symlink %s is ignored"
+msgstr "Symlink %s wird ignoriert"
+
+#: mycopy.pl:318 mycopy.pl:388
+#, perl-format
+msgid "Cannot open dir %s!"
+msgstr "Kann Verzeichnis %s nicht öffnen!"
+
+#: mycopy.pl:319
+#, perl-format
+msgid "reading dir %s"
+msgstr "Lese Verzeichnis %s"
+
+#: mycopy.pl:328
+#, perl-format
+msgid "%s is subdir"
+msgstr "%s ist Unterverzeichnis"
+
+#: mycopy.pl:334
+#, perl-format
+msgid "rekursive call from %s"
+msgstr "rekursiver Aufruf von %s"
+
+#: mycopy.pl:340
+#, perl-format
+msgid "rekursive call finished. I'm in %s"
+msgstr "rekursiver Aufruf beendet. Ich bin in %s"
+
+#: mycopy.pl:370
+#, perl-format
+msgid "Open global configuration file %s"
+msgstr "Öffne globale Konfigurationsdatei %s"
+
+#: mycopy.pl:383
+msgid "* in global configuration file at wrong position!"
+msgstr "* in globaler Konfigurationsdatei an der falschen Stelle!"
+
+#: mycopy.pl:389
+#, perl-format
+msgid "  reading dir %s"
+msgstr "  lese Verzeichnis %s"
+
+#: mycopy.pl:400
+#, perl-format
+msgid "  %s: %s is subdir"
+msgstr "  %s: %s ist Unterverzeichnis"
+
+#: mycopy.pl:410
+#, perl-format
+msgid "  %s: %s is dir"
+msgstr "  %s: %s ist Verzeichnis"
+
+#: mycopy.pl:423
+#, perl-format
+msgid "Comparing %s with %s"
+msgstr "Vergleiche %s mit %s"
+
+#: mycopy.pl:429 mycopy.pl:452
+#, perl-format
+msgid "Reading configuration file %s"
+msgstr "Lese Konfigurationsdatei %s"
+
+#: mycopy.pl:431 mycopy.pl:454
+#, perl-format
+msgid "Cannot open %s!"
+msgstr "Kann %s nicht öffnen!"
+
+#: mycopy.pl:437
+#, perl-format
+msgid "Source %s: %s"
+msgstr "Source %s: %s"
+
+#: mycopy.pl:444 mycopy.pl:467
+#, perl-format
+msgid "Error in configuration file %s line:%s"
+msgstr "Fehler in Konfigurationsdatei %s Zeile:%s"
+
+#: mycopy.pl:460
+#, perl-format
+msgid "Dest %s: %s"
+msgstr "Dest %s: %s"
+
+#: mycopy.pl:474
+msgid "target for Source and Dest is the same"
+msgstr "Target für Source und Dest ist gleich"
+
+#: mycopy.pl:480
+msgid "Source is yes und Dest is yes"
+msgstr "Source ist ja und Dest ist ja"
+
+#: mycopy.pl:486
+msgid "rekursive is yes"
+msgstr "rekursiv ist ja"
+
+#: mycopy.pl:487
+msgid " rekursive"
+msgstr " rekursiv"
+
+#: mycopy.pl:495
+#, perl-format
+msgid "Source subdir is %s"
+msgstr "Source Unterverzeichnis ist %s"
+
+#: mycopy.pl:502
+#, perl-format
+msgid "Source subdir %s does not exist. Error in %s?"
+msgstr "Source Unterverzeichnis %s existiert nicht. Fehler in %s?"
+
+#: mycopy.pl:514
+#, perl-format
+msgid "Dest subdir is %s"
+msgstr "Dest Unterverzeichnis ist %s"
+
+#: mycopy.pl:524 mycopy.pl:530
+#, perl-format
+msgid "%s is mounted"
+msgstr "%s ist gemountet"
+
+#: mycopy.pl:534
+#, perl-format
+msgid "Copying%s %s from %s to %s"
+msgstr "Kopiere%s %s von %s nach %s"
+
+#: mycopy.pl:551
+#, perl-format
+msgid "Use STAMP %s"
+msgstr "Benutze Stempel STAMP %s"
+
+#: mycopy.pl:559
+#, perl-format
+msgid "retmycopy is %s"
+msgstr "retmycopy ist %s"
+
+#: mycopy.pl:571
+#, perl-format
+msgid "putting STAMPFILE %s to new value"
+msgstr "setze Stempeldatei STAMPFILE %s auf einen neuen Wert"
+
+#: mycopy.pl:581 mycopy.pl:589
+#, perl-format
+msgid "%s is not mounted"
+msgstr "%s ist nicht gemountet"
+
+#: mycopy.pl:597
+msgid "Source and Dest are not yes"
+msgstr "Source und Dest sind nicht ja"
+
+#: mycopy.pl:605
+msgid "target for Source and Dest is not the same"
+msgstr "target für Source und Dest sind nicht gleich"
+
+#: mycopy.pl:614 mycopy.pl:622
+#, perl-format
+msgid "Cannot find %s"
+msgstr "Kann %s nicht finden"
+
+#: mycopy.pl:629
+#, perl-format
+msgid "Removing obsolete tmp-file %s"
+msgstr "Entferne überflüssige tmp-Datei %s"
