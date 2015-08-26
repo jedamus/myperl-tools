@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:32 (C) 2012 by Leander Jedamus
+# modifiziert Mittwoch, 26. August 2015 12:59 von Leander Jedamus
 # modifiziert Dienstag, 14. Juli 2015 13:27 von Leander Jedamus
 # modifiziert Dienstag, 23. Juni 2015 14:59 von Leander Jedamus
 # modifiziert Samstag, 16. Februar 2013 17:59 von Leander Jedamus
@@ -454,114 +455,114 @@ foreach my $source (@wo)
     if($source ne $dest)
     {
       if($debug >= 2) { debug(_("Comparing %s with %s"),$source,$dest); };
-      my $sfconf = $source . "/" . $conffile;
-      if(-e $sfconf)
+      if(-e $source . "/" . $mounted)
       {
 	if($debug >= 2)
 	{
-	  debug(_("Reading configuration file %s"),$sfconf);
+	  debug(_("%s is mounted"),$source);
 	};
-	open(SOURCE,$sfconf) || die sprintf(_("Cannot open %s!"),$sfconf);
-	my $scount = 0;
-	while(<SOURCE>)
+	if(-e $dest . "/" . $mounted)
 	{
-	  $scount++;
-	  chomp;
-	  if($debug >= 3) { debug(_("Source %s: %s"),$sfconf,$_); };
-	  if(! /^#/)
+	  if($debug >= 2)
 	  {
-	    (my $starget,my $ssrc,my $sdst,my $srek, my $sstamp,
-	     my $ssubdir, my $sfiles) = split(/:/);
-	    if(! defined $sfiles)
+	    debug(_("%s is mounted"),$dest);
+	  };
+	  my $sfconf = $source . "/" . $conffile;
+	  if(-e $sfconf)
+	  {
+	    if($debug >= 2)
 	    {
-	      die sprintf(_("Error in configuration file %s line:%s"),
-			  $sfconf,$scount);
-	    };# if ! defined $sfiles
-	    my $dfconf = $dest ."/" . $conffile;
-	    if(-e $dfconf)
+	      debug(_("Reading configuration file %s"),$sfconf);
+	    };
+	    open(SOURCE,$sfconf) || die sprintf(_("Cannot open %s!"),$sfconf);
+	    my $scount = 0;
+	    while(<SOURCE>)
 	    {
-	      if($debug >= 2)
+	      $scount++;
+	      chomp;
+	      if($debug >= 3) { debug(_("Source %s: %s"),$sfconf,$_); };
+	      if(! /^#/)
 	      {
-		debug(_("Reading configuration file %s"),$dfconf);
-	      };
-	      open(DEST,$dfconf) || die sprintf(_("Cannot open %s!"),$dfconf);
-	      my $dcount = 0;
-	      while(<DEST>)
-	      {
-		$dcount++;
-		chomp;
-		if($debug >= 3) { debug(_("Dest %s: %s"),$dfconf,$_); };
-		if(! /^#/)
+		(my $starget,my $ssrc,my $sdst,my $srek, my $sstamp,
+		 my $ssubdir, my $sfiles) = split(/:/);
+		if(! defined $sfiles)
 		{
-		  (my $dtarget,my $dsrc,my $ddst,my $drek, my $dstamp,
-		   my $dsubdir, my $dfiles) = split(/:/);
-		  if(! defined $dfiles)
+		  die sprintf(_("Error in configuration file %s line:%s"),
+			      $sfconf,$scount);
+		};# if ! defined $sfiles
+		my $dfconf = $dest ."/" . $conffile;
+		if(-e $dfconf)
+		{
+		  if($debug >= 2)
 		  {
-		    die sprintf(_("Error in configuration file %s ".
-					"line:%s"),$dfconf,$dcount);
-		  };# if ! defined $dfiles
-		  if($starget eq $dtarget)
+		    debug(_("Reading configuration file %s"),$dfconf);
+		  };
+		  open(DEST,$dfconf) || die sprintf(_("Cannot open %s!"),$dfconf);
+		  my $dcount = 0;
+		  while(<DEST>)
 		  {
-		    if($debug >= 2)
+		    $dcount++;
+		    chomp;
+		    if($debug >= 3) { debug(_("Dest %s: %s"),$dfconf,$_); };
+		    if(! /^#/)
 		    {
-		      debug(_("target for Source and Dest is the same"));
-		    };# if $debug >= 2
-		    if(($ssrc =~ /^[yYjJ]/) and ($ddst =~ /^[yYjJ]/))
-		    {
-		      if($debug >= 2)
+		      (my $dtarget,my $dsrc,my $ddst,my $drek, my $dstamp,
+		       my $dsubdir, my $dfiles) = split(/:/);
+		      if(! defined $dfiles)
 		      {
-			debug(_("Source is yes und Dest is yes"));
-		      };# if $debug >= 2
-		      my $trek = "";
-		      my $rekursive = "n";
-		      if($srek =~ /^[yYjJ]/)
-		      {
-			if($debug >= 2) { debug(_("rekursive is yes")); };
-			$trek = _(" rekursive");
-			$rekursive = "y";
-		      };
-		      my $sdir = $source;
-		      if($ssubdir ne "")
+			die sprintf(_("Error in configuration file %s ".
+					    "line:%s"),$dfconf,$dcount);
+		      };# if ! defined $dfiles
+		      if($starget eq $dtarget)
 		      {
 			if($debug >= 2)
 			{
-			  debug(_("Source subdir is %s"),$ssubdir);
-			};
-			$sdir .= "/" . $ssubdir;
-			if(! -d $sdir)
-			{
-			  if($warn >= 1)
-			  {
-			    warning(_("Source subdir %s does not exist. ".
-					"Error in %s?"),
-				    $ssubdir,$sfconf);
-			  };# if $warn >= 1
-			  next;
-			};# if ! -d $sdir
-		      };# if $ssubdir ne ""
-		      my $ddir = $dest;
-		      if($dsubdir ne "")
-		      {
-			if($debug >= 2)
-			{
-			  debug(_("Dest subdir is %s"),$dsubdir);
-			};
-			$ddir .= "/" . $dsubdir;
-		      };# if $dsubdir ne ""
-		      if(-e $source . "/" . $mounted)
-		      {
-			my $dstampfile = "$dest/$stampfile";
-
-			if($debug >= 2)
-			{
-			  debug(_("%s is mounted"),$source);
-			};
-			if(-e $dest . "/" . $mounted)
+			  debug(_("target for Source and Dest is the same"));
+			};# if $debug >= 2
+			if(($ssrc =~ /^[yYjJ]/) and ($ddst =~ /^[yYjJ]/))
 			{
 			  if($debug >= 2)
 			  {
-			    debug(_("%s is mounted"),$dest);
+			    debug(_("Source is yes und Dest is yes"));
+			  };# if $debug >= 2
+			  my $trek = "";
+			  my $rekursive = "n";
+			  if($srek =~ /^[yYjJ]/)
+			  {
+			    if($debug >= 2) { debug(_("rekursive is yes")); };
+			    $trek = _(" rekursive");
+			    $rekursive = "y";
 			  };
+			  my $sdir = $source;
+			  if($ssubdir ne "")
+			  {
+			    if($debug >= 2)
+			    {
+			      debug(_("Source subdir is %s"),$ssubdir);
+			    };
+			    $sdir .= "/" . $ssubdir;
+			    if(! -d $sdir)
+			    {
+			      if($warn >= 1)
+			      {
+				warning(_("Source subdir %s does not exist. ".
+					    "Error in %s?"),
+					$ssubdir,$sfconf);
+			      };# if $warn >= 1
+			      next;
+			    };# if ! -d $sdir
+			  };# if $ssubdir ne ""
+			  my $ddir = $dest;
+			  if($dsubdir ne "")
+			  {
+			    if($debug >= 2)
+			    {
+			      debug(_("Dest subdir is %s"),$dsubdir);
+			    };
+			    $ddir .= "/" . $dsubdir;
+			  };# if $dsubdir ne ""
+			  my $dstampfile = "$dest/$stampfile";
+
 			  if($debug >= 1)
 			  {
 			    message(_("Copying%s %s from %s to %s"),
@@ -606,54 +607,54 @@ foreach my $source (@wo)
 			      };
 			    };# if $stamp eq "y"
 			  };# if $retmycopy ne ""
-			} # if -e $dest . "/" . $mounted
+			} # if ($ssrc =~ /^[yYjJ]/) and ($ddst =~ /^[yYjJ]/)
 			else
 			{
-			  if($warn >= 1)
+			  if($debug >= 2)
 			  {
-			    warning(_("%s is not mounted"),$dest);
-			  };
-			};# else -e $dest . "/" . $mounted
-		      } # if -e $source . "/" . $mounted
+			    debug(_("Source and Dest are not yes"));
+			  };# if $debug >= 2
+			};# else ($ssrc =~ /^[yYjJ]/) and ($ddst =~ /^[yYjJ]/)
+		      } # if $starget eq $dtarget
 		      else
 		      {
-			if($warn >= 1)
+			if($debug >= 2)
 			{
-			  warning(_("%s is not mounted"),$source);
-			};
-		      };# else -e $source . "/" . $mounted
-		    } # if ($ssrc =~ /^[yYjJ]/) and ($ddst =~ /^[yYjJ]/)
-		    else
-		    {
-		      if($debug >= 2)
-		      {
-			debug(_("Source and Dest are not yes"));
-		      };# if $debug >= 2
-		    };# else ($ssrc =~ /^[yYjJ]/) and ($ddst =~ /^[yYjJ]/)
-		  } # if $starget eq $dtarget
-		  else
-		  {
-		    if($debug >= 2)
-		    {
-		      debug(_("target for Source and Dest is not the same"));
-		    };# if $debug >= 2
-		  };# else $starget eq $dtarget
-		};# if ! /^#/
-	      };# while DEST
-	      close(DEST);
-	    } # if -e $dfconf
-	    else
-	    {
-	      if($warn >= 1) { warning(_("Cannot find %s"),$dfconf); };
-	    };# else -e $dfconf
-	  };# if ! /^#/
-	};# while SOURCE
-	close(SOURCE);
-      } # if -e $sfconf
+			  debug(_("target for Source and Dest is not the same"));
+			};# if $debug >= 2
+		      };# else $starget eq $dtarget
+		    };# if ! /^#/
+		  };# while DEST
+		  close(DEST);
+		} # if -e $dfconf
+		else
+		{
+		  if($warn >= 1) { warning(_("Cannot find %s"),$dfconf); };
+		};# else -e $dfconf
+	      };# if ! /^#/
+	    };# while SOURCE
+	    close(SOURCE);
+	  } # if -e $sfconf
+	  else
+	  {
+	    if($warn >= 1) { warning(_("Cannot find %s"),$sfconf); };
+	  };# else -e $sfconf
+	} # if dest is mounted
+	else
+	{
+	  if($warn >= 1)
+	  {
+	    warning(_("%s is not mounted"),$dest);
+	  };
+	};# else -e $dest . "/" . $mounted
+      } # if source is mounted
       else
       {
-	if($warn >= 1) { warning(_("Cannot find %s"),$sfconf); };
-      };# else -e $sfconf
+	if($warn >= 1)
+	{
+	  warning(_("%s is not mounted"),$source);
+	};
+      };# else -e $source . "/" . $mounted
     };# if $source ne $dest
   };# foreach @wo (inner loop)
 };# foreach @wo (outer loop)
