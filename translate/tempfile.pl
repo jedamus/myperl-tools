@@ -6,3 +6,5 @@ $dir = tempdir( CLEANUP =>  1 );
 ($fh, $filename) = tempfile( DIR => $dir );
 
 binmode($fh);
+
+GetOptions('file=s' => \@files);
