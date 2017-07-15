@@ -1,14 +1,14 @@
 # mycopy.pl.
-# Copyright (C) 2012 Leander Jedamus
+# Copyright (C) 2015 Leander Jedamus
 # This file is distributed under the same license as the mycopy.pl package.
-# ljedamus@gmail.com, 2012.
+# ljedamus@gmail.com, 2015.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mycopy.pl 1.9\n"
+"Project-Id-Version: mycopy.pl 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-14 13:26+0200\n"
+"POT-Creation-Date: 2015-08-26 13:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Leander Jedamus <ljedamus@gmail.com>\n"
 "Language-Team: Leander Jedamus <ljedamus@gmail.com>\n"
@@ -17,245 +17,245 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mycopy.pl:119
+#: mycopy.pl:121
 msgid "usage:"
 msgstr ""
 
-#: mycopy.pl:120
+#: mycopy.pl:122
 msgid "this text"
 msgstr ""
 
-#: mycopy.pl:121
+#: mycopy.pl:123
 msgid "only try, do not copy"
 msgstr ""
 
-#: mycopy.pl:122
+#: mycopy.pl:124
 msgid "set warnings"
 msgstr ""
 
-#: mycopy.pl:123
+#: mycopy.pl:125
 msgid "set debug information and warnings"
 msgstr ""
 
-#: mycopy.pl:224
+#: mycopy.pl:226
 #, perl-format
 msgid "Creating dir %s"
 msgstr ""
 
-#: mycopy.pl:244
+#: mycopy.pl:246
 #, perl-format
 msgid "%s already exists"
 msgstr ""
 
-#: mycopy.pl:252
+#: mycopy.pl:254
 #, perl-format
 msgid "%s is newer than %s"
 msgstr ""
 
-#: mycopy.pl:257
+#: mycopy.pl:259
 #, perl-format
 msgid "%s is identical to %s"
 msgstr ""
 
-#: mycopy.pl:269 mycopy.pl:301
+#: mycopy.pl:271 mycopy.pl:303
 #, perl-format
 msgid "%s is newer than stamp"
 msgstr ""
 
-#: mycopy.pl:277 mycopy.pl:309
+#: mycopy.pl:279 mycopy.pl:311
 #, perl-format
 msgid "%s is not newer than stamp"
 msgstr ""
 
-#: mycopy.pl:283
+#: mycopy.pl:285
 #, perl-format
 msgid "%s is newer"
 msgstr ""
 
-#: mycopy.pl:290
+#: mycopy.pl:292
 #, perl-format
 msgid "let %s unchanged"
 msgstr ""
 
-#: mycopy.pl:315
+#: mycopy.pl:317
 #, perl-format
 msgid "%s does not exist"
 msgstr ""
 
-#: mycopy.pl:324
+#: mycopy.pl:326
 #, perl-format
 msgid "I copy %s from %s to %s"
 msgstr ""
 
-#: mycopy.pl:334
+#: mycopy.pl:336
 #, perl-format
 msgid "set ret to %s"
 msgstr ""
 
-#: mycopy.pl:335
+#: mycopy.pl:337
 #, perl-format
 msgid "set retstamp to %s"
 msgstr ""
 
-#: mycopy.pl:340
+#: mycopy.pl:342
 #, perl-format
 msgid "symlink %s is ignored"
 msgstr ""
 
-#: mycopy.pl:349 mycopy.pl:420
+#: mycopy.pl:351 mycopy.pl:422
 #, perl-format
 msgid "Cannot open dir %s!"
 msgstr ""
 
-#: mycopy.pl:350
+#: mycopy.pl:352
 #, perl-format
 msgid "reading dir %s"
 msgstr ""
 
-#: mycopy.pl:359
+#: mycopy.pl:361
 #, perl-format
 msgid "%s is subdir"
 msgstr ""
 
-#: mycopy.pl:365
+#: mycopy.pl:367
 #, perl-format
 msgid "rekursive call from %s"
 msgstr ""
 
-#: mycopy.pl:371
+#: mycopy.pl:373
 #, perl-format
 msgid "rekursive call finished. I'm in %s"
 msgstr ""
 
-#: mycopy.pl:402
+#: mycopy.pl:404
 #, perl-format
 msgid "Open global configuration file %s"
 msgstr ""
 
-#: mycopy.pl:415
+#: mycopy.pl:417
 msgid "* in global configuration file at wrong position!"
 msgstr ""
 
-#: mycopy.pl:421
+#: mycopy.pl:423
 #, perl-format
 msgid "  reading dir %s"
 msgstr ""
 
-#: mycopy.pl:432
+#: mycopy.pl:434
 #, perl-format
 msgid "  %s: %s is subdir"
 msgstr ""
 
-#: mycopy.pl:442
+#: mycopy.pl:444
 #, perl-format
 msgid "  %s: %s is dir"
 msgstr ""
 
-#: mycopy.pl:455
+#: mycopy.pl:457
 #, perl-format
 msgid "Comparing %s with %s"
 msgstr ""
 
-#: mycopy.pl:461 mycopy.pl:484
-#, perl-format
-msgid "Reading configuration file %s"
-msgstr ""
-
-#: mycopy.pl:463 mycopy.pl:486
-#, perl-format
-msgid "Cannot open %s!"
-msgstr ""
-
-#: mycopy.pl:469
-#, perl-format
-msgid "Source %s: %s"
-msgstr ""
-
-#: mycopy.pl:476 mycopy.pl:499
-#, perl-format
-msgid "Error in configuration file %s line:%s"
-msgstr ""
-
-#: mycopy.pl:492
-#, perl-format
-msgid "Dest %s: %s"
-msgstr ""
-
-#: mycopy.pl:506
-msgid "target for Source and Dest is the same"
-msgstr ""
-
-#: mycopy.pl:512
-msgid "Source is yes und Dest is yes"
-msgstr ""
-
-#: mycopy.pl:518
-msgid "rekursive is yes"
-msgstr ""
-
-#: mycopy.pl:519
-msgid " rekursive"
-msgstr ""
-
-#: mycopy.pl:527
-#, perl-format
-msgid "Source subdir is %s"
-msgstr ""
-
-#: mycopy.pl:534
-#, perl-format
-msgid "Source subdir %s does not exist. Error in %s?"
-msgstr ""
-
-#: mycopy.pl:546
-#, perl-format
-msgid "Dest subdir is %s"
-msgstr ""
-
-#: mycopy.pl:556 mycopy.pl:562
+#: mycopy.pl:462 mycopy.pl:468
 #, perl-format
 msgid "%s is mounted"
 msgstr ""
 
-#: mycopy.pl:566
+#: mycopy.pl:475 mycopy.pl:498
+#, perl-format
+msgid "Reading configuration file %s"
+msgstr ""
+
+#: mycopy.pl:477 mycopy.pl:500
+#, perl-format
+msgid "Cannot open %s!"
+msgstr ""
+
+#: mycopy.pl:483
+#, perl-format
+msgid "Source %s: %s"
+msgstr ""
+
+#: mycopy.pl:490 mycopy.pl:513
+#, perl-format
+msgid "Error in configuration file %s line:%s"
+msgstr ""
+
+#: mycopy.pl:506
+#, perl-format
+msgid "Dest %s: %s"
+msgstr ""
+
+#: mycopy.pl:520
+msgid "target for Source and Dest is the same"
+msgstr ""
+
+#: mycopy.pl:526
+msgid "Source is yes und Dest is yes"
+msgstr ""
+
+#: mycopy.pl:532
+msgid "rekursive is yes"
+msgstr ""
+
+#: mycopy.pl:533
+msgid " rekursive"
+msgstr ""
+
+#: mycopy.pl:541
+#, perl-format
+msgid "Source subdir is %s"
+msgstr ""
+
+#: mycopy.pl:548
+#, perl-format
+msgid "Source subdir %s does not exist. Error in %s?"
+msgstr ""
+
+#: mycopy.pl:560
+#, perl-format
+msgid "Dest subdir is %s"
+msgstr ""
+
+#: mycopy.pl:568
 #, perl-format
 msgid "Copying%s %s from %s to %s"
 msgstr ""
 
-#: mycopy.pl:583
+#: mycopy.pl:585
 #, perl-format
 msgid "Use STAMP %s"
 msgstr ""
 
-#: mycopy.pl:591
+#: mycopy.pl:593
 #, perl-format
 msgid "retmycopy is %s"
 msgstr ""
 
-#: mycopy.pl:603
+#: mycopy.pl:605
 #, perl-format
 msgid "putting STAMPFILE %s to new value"
 msgstr ""
 
-#: mycopy.pl:613 mycopy.pl:621
-#, perl-format
-msgid "%s is not mounted"
-msgstr ""
-
-#: mycopy.pl:629
+#: mycopy.pl:615
 msgid "Source and Dest are not yes"
 msgstr ""
 
-#: mycopy.pl:637
+#: mycopy.pl:623
 msgid "target for Source and Dest is not the same"
 msgstr ""
 
-#: mycopy.pl:646 mycopy.pl:654
+#: mycopy.pl:632 mycopy.pl:640
 #, perl-format
 msgid "Cannot find %s"
 msgstr ""
 
-#: mycopy.pl:661
+#: mycopy.pl:647 mycopy.pl:655
+#, perl-format
+msgid "%s is not mounted"
+msgstr ""
+
+#: mycopy.pl:663
 #, perl-format
 msgid "Removing obsolete tmp-file %s"
 msgstr ""

@@ -1,17 +1,17 @@
 # mycopy.pl.
-# Copyright (C) 2015 Leander Jedamus
+# Copyright (C) 2016 Leander Jedamus
 # This file is distributed under the same license as the mycopy.pl package.
-# ljedamus@gmail.com, 2015.
+# ljedamus@testmail.com, 2016.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: mycopy.pl 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-26 13:00+0200\n"
+"POT-Creation-Date: 2016-10-07 16:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Leander Jedamus <ljedamus@gmail.com>\n"
-"Language-Team: Leander Jedamus <ljedamus@gmail.com>\n"
+"Last-Translator: Leander Jedamus <ljedamus@testmail.com>\n"
+"Language-Team: Leander Jedamus <ljedamus@testmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

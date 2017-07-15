@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
+# modifiziert Montag, 10. Oktober 2016 13:46 von Leander Jedamus
 # modifiziert Samstag, 04. Juli 2015 14:24 von Leander Jedamus
 # modifiziert Dienstag, 23. Juni 2015 17:47 von Leander Jedamus
 # modifiziert Mittwoch, 25. März 2015 10:04 von Leander Jedamus
@@ -38,7 +39,7 @@ my $tmpfile = "/tmp/a2ps.pl.$$.out";
 my $timetmp = "/tmp/time";
 (my $username) = split(',',(getpwuid($<))[6]);
 
-$opt_P = "duplex";
+$opt_P = "laserjet";
 
 &GetOptions('P:s');
 
