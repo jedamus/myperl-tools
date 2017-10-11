@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
+# modifiziert Mittwoch, 11. Oktober 2017 18:39 von Leander Jedamus
 # modifiziert Montag, 10. Oktober 2016 13:46 von Leander Jedamus
 # modifiziert Samstag, 04. Juli 2015 14:24 von Leander Jedamus
 # modifiziert Dienstag, 23. Juni 2015 17:47 von Leander Jedamus
@@ -37,6 +38,7 @@ sub _ ($) { &gettext; }
 
 my $tmpfile = "/tmp/a2ps.pl.$$.out";
 my $timetmp = "/tmp/time";
+my $usernametmp = "/tmp/username";
 (my $username) = split(',',(getpwuid($<))[6]);
 
 $opt_P = "laserjet";
@@ -57,6 +59,15 @@ foreach my $file (@ARGV)
   open(TIME,$tmpfile);
   $time = <TIME>;
   chomp($time);
+  close(TIME);
+  open(HEADER,">$usernametmp");
+  print HEADER sprintf(_("printed by %s"),$username);
+  close(HEADER);
+  system "iconv -f utf8 -t latin1 <$usernametmp >$tmpfile";
+  open(HEADER,$tmpfile);
+  my $header = <HEADER>;
+  chomp($header);
+  close(HEADER);
   
   #system "iconv","-f","utf8","-t","latin1","-o",$tmpfile,$file;
   system "iconv -f utf8 -t latin1 <$file >$tmpfile";
@@ -74,7 +85,7 @@ foreach my $file (@ARGV)
 	 "--right-title="._('page $p./$p>'),
 	 "--left-footer=$time",             # Dienstag, 27. November 2012
 	 "--footer=$file",                  # Dateiname mit Pfad
-	 "--header=".sprintf(_("printed by %s"),$username), # Benutzername
+	 "--header=$header",                # Benutzername
 	 "-o",$filetmp,                     # Ausgabe in Datei
 	 $tmpfile;
 
