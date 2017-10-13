@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
+# modifiziert Freitag, 13. Oktober 2017 09:46 von Leander Jedamus
 # modifiziert Mittwoch, 11. Oktober 2017 18:39 von Leander Jedamus
 # modifiziert Montag, 10. Oktober 2016 13:46 von Leander Jedamus
 # modifiziert Samstag, 04. Juli 2015 14:24 von Leander Jedamus
@@ -37,37 +38,41 @@ bind_textdomain_codeset($domain,"ISO-8859-1");
 sub _ ($) { &gettext; }
 
 my $tmpfile = "/tmp/a2ps.pl.$$.out";
-my $timetmp = "/tmp/time";
-my $usernametmp = "/tmp/username";
 (my $username) = split(',',(getpwuid($<))[6]);
 
 $opt_P = "laserjet";
 
 &GetOptions('P:s');
 
+sub convert {
+  my ($str) = @_;
+
+  my $IN = "/tmp/$$.in";
+  my $OUT = "/tmp/$$.out";
+
+  open(IN,">$IN");
+  print IN $str;
+  close(IN);
+  system "iconv -f utf8 -t latin1 <$IN >$OUT";
+  unlink $IN;
+  open(OUT,$OUT);
+  $str = <OUT>;
+  chomp($str);
+  close(OUT);
+  unlink $OUT;
+  return $str;
+};# sub convert
+
 foreach my $file (@ARGV)
 {
   (my $basename = $file) =~ s/.*\/(.*)$/$1/;
+  $basename = convert($basename);
+  $file = convert($file);
   my $filetmp = "/tmp/$basename.ps";
   my $filetmppdf = "/tmp/$basename.pdf";
   my $filetime = strftime("%a, %d.%m.%Y %H:%M",localtime((stat($file))[9]));
-  my $time = strftime("%A, %d. %B %Y",localtime());
-  open(TIME,">$timetmp");
-  print TIME $time;
-  close(TIME);
-  system "iconv -f utf8 -t latin1 <$timetmp >$tmpfile";
-  open(TIME,$tmpfile);
-  $time = <TIME>;
-  chomp($time);
-  close(TIME);
-  open(HEADER,">$usernametmp");
-  print HEADER sprintf(_("printed by %s"),$username);
-  close(HEADER);
-  system "iconv -f utf8 -t latin1 <$usernametmp >$tmpfile";
-  open(HEADER,$tmpfile);
-  my $header = <HEADER>;
-  chomp($header);
-  close(HEADER);
+  my $time = convert(strftime("%A, %d. %B %Y",localtime()));
+  my $header = convert(sprintf(_("printed by %s"),$username));
   
   #system "iconv","-f","utf8","-t","latin1","-o",$tmpfile,$file;
   system "iconv -f utf8 -t latin1 <$file >$tmpfile";
@@ -93,8 +98,8 @@ foreach my $file (@ARGV)
   {
     #print "OS = $OS\n";
     system "ps2pdf","-sPAPERSIZE=a4",$filetmp,$filetmppdf;
-    system "lpr","-P",$opt_P,$filetmppdf;
-    #system "evince",$filetmppdf;
+    #system "lpr","-P",$opt_P,$filetmppdf;
+    system "evince",$filetmppdf;
     #system "evince",$filetmp;
     unlink $filetmppdf;
   }
@@ -112,7 +117,6 @@ foreach my $file (@ARGV)
 };# foreach
 
 unlink $tmpfile;
-unlink $timetmp;
 
 # vim: ai sw=2
 
