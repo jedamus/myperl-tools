@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
-# modifiziert Freitag, 13. Oktober 2017 15:41 von Leander Jedamus
+# modifiziert Freitag, 13. Oktober 2017 15:44 von Leander Jedamus
 # modifiziert Mittwoch, 11. Oktober 2017 18:39 von Leander Jedamus
 # modifiziert Montag, 10. Oktober 2016 13:46 von Leander Jedamus
 # modifiziert Samstag, 04. Juli 2015 14:24 von Leander Jedamus
@@ -40,8 +40,8 @@ sub _ ($) { &gettext; }
 sub convert {
   my ($str) = @_;
 
-  my $IN  = "/tmp/a2ps.pl.convert.$$.in";
-  my $OUT = "/tmp/a2ps.pl.convert.$$.out";
+  my $IN  = "/tmp/$domain.convert.$$.in";
+  my $OUT = "/tmp/$domain.convert.$$.out";
 
   open(IN,">$IN");
   print IN $str;
@@ -56,7 +56,7 @@ sub convert {
   return $str;
 };# sub convert
 
-my $tmpfile = "/tmp/a2ps.pl.$$.out";
+my $tmpfile = "/tmp/$domain.$$.out";
 (my $username) = split(',',(getpwuid($<))[6]);
 
 $opt_P = "laserjet";
