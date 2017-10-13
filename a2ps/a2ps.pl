@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
-# modifiziert Freitag, 13. Oktober 2017 11:14 von Leander Jedamus
+# modifiziert Freitag, 13. Oktober 2017 12:11 von Leander Jedamus
 # modifiziert Mittwoch, 11. Oktober 2017 18:39 von Leander Jedamus
 # modifiziert Montag, 10. Oktober 2016 13:46 von Leander Jedamus
 # modifiziert Samstag, 04. Juli 2015 14:24 von Leander Jedamus
@@ -37,13 +37,6 @@ textdomain($domain);
 bind_textdomain_codeset($domain,"ISO-8859-1");
 sub _ ($) { &gettext; }
 
-my $tmpfile = "/tmp/a2ps.pl.$$.out";
-(my $username) = split(',',(getpwuid($<))[6]);
-
-$opt_P = "laserjet";
-
-&GetOptions('P:s');
-
 sub convert {
   my ($str) = @_;
 
@@ -63,19 +56,29 @@ sub convert {
   return $str;
 };# sub convert
 
+my $tmpfile = "/tmp/a2ps.pl.$$.out";
+(my $username) = split(',',(getpwuid($<))[6]);
+
+$opt_P = "laserjet";
+
+&GetOptions('P:s');
+
 foreach my $file (@ARGV)
 {
+  #system "iconv","-f","utf8","-t","latin1","-o",$tmpfile,$file;
+  system "iconv -f utf8 -t latin1 <$file >$tmpfile";
+
   (my $basename = $file) =~ s/.*\/(.*)$/$1/;
-  $basename = convert($basename);
+
   my $filetmp = "/tmp/$basename.ps";
   my $filetmppdf = "/tmp/$basename.pdf";
+
+  $basename = convert($basename);
+  $file = convert($file);
   my $filetime = strftime("%a, %d.%m.%Y %H:%M",localtime((stat($file))[9]));
   my $time = convert(strftime("%A, %d. %B %Y",localtime()));
   my $header = convert(sprintf(_("printed by %s"),$username));
   
-  #system "iconv","-f","utf8","-t","latin1","-o",$tmpfile,$file;
-  system "iconv -f utf8 -t latin1 <$file >$tmpfile";
-  $file = convert($file);
   system "a2ps",
 	 "--margin=0",
          "--line-numbers=1",                # Zeilennummern einschalten
