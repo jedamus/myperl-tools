@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
+# modifiziert Montag, 16. Oktober 2017 09:43 von Leander Jedamus
 # modifiziert Montag, 17. August 2015 11:21 von Leander Jedamus
 # modifiziert Mittwoch, 22. Juli 2015 17:23 von Leander Jedamus
 # modifiziert Dienstag, 23. Juni 2015 16:04 von Leander Jedamus
@@ -13,7 +14,7 @@
 
 use strict;
 use warnings;
-use vars qw($opt_file $opt_project $opt_version);
+use File::Temp qw/ tempfile tempdir /;
 use Getopt::Long;
 
 my $author = "Leander Jedamus";
@@ -24,58 +25,74 @@ my $transdir = "translate";
 my $charset = "UTF-8";
 #my $charset = "ISO-8859-1";
 my @languages = ("de","en");
+my @tmpfiles;
 
-$opt_file = "mycopy.pl";
-$opt_project = "mycopy.pl";
-$opt_version = "1.0";
+my @files;
+my $project = "mycopy.pl";
+my $version = "1.0";
 
-&GetOptions('file=s','project=s','version=s');
+&GetOptions('file=s' => \@files,'project=s' => \$project,'version=s' => \$version);
 
-(my $endung = $opt_file) =~ s/.*(\..*)/$1/;
+my $tmpdir = tempdir( CLEANUP => 1 );
 
-my $tmpscript = "/tmp/gettext$endung";
+foreach my $file (@files) {
 
-open(SCRIPT,$opt_file);
-open(TMPSCRIPT,">$tmpscript");
-while(<SCRIPT>)
-{
-  s/_[(]/gettext(/g;
-  print TMPSCRIPT;
-};# while <SCRIPT>
-close(TMPSCRIPT);
-close(SCRIPT);
+  my ($fh, $tmpfile) = tempfile( DIR => $tmpdir );
+  (my $endung = $file) =~ s/.*(\..*)/$1/;
+  $tmpfile .= $endung;
+  push(@tmpfiles,$tmpfile);
+  
+  open(SCRIPT,$file);
+  open(TMPSCRIPT,">$tmpfile");
+  while(<SCRIPT>)
+  {
+    s/_[(]/gettext(/g;
+    print TMPSCRIPT;
+  };# while <SCRIPT>
+  close(TMPSCRIPT);
+  close(SCRIPT);
+};# foreach
+
+my $filelist;
+foreach my $tmpfile (@tmpfiles) { $filelist .= $tmpfile . " " };
 
 #system("rm -rf $transdir");
 system("mkdir -p $transdir");
 
-if(-f "$transdir/$opt_project.po")
+if(-f "$transdir/$project.po")
 {
-  system("mv $transdir/$opt_project.po $transdir/$opt_project.po.old");
+  system("mv $transdir/$project.po $transdir/$project.po.old");
 };
-system("xgettext --from-code=utf-8 $tmpscript -d $opt_project -p $transdir");
+system("xgettext --from-code=utf-8 $filelist -d $project -p $transdir");
 chdir $transdir;
-open(IN,"$opt_project.po");
-open(OUT,">$opt_project.po.tmp");
+open(IN,"$project.po");
+open(OUT,">$project.po.tmp");
 while(<IN>)
 {
-  s/SOME DESCRIPTIVE TITLE/$opt_file/g;
+  s/SOME DESCRIPTIVE TITLE/$project/g;
   s/YEAR THE PACKAGE'S COPYRIGHT HOLDER/$year $author/g;
   s/FIRST AUTHOR <EMAIL\@ADDRESS>, YEAR/$email, $year/g;
   s/FULL NAME <EMAIL\@ADDRESS>/$author <$email>/g;
   s/LANGUAGE <LL\@li.org>/$author <$email>/g;
   s/CHARSET/$charset/g;
-  s/VERSION/$opt_version/g;
-  s/PACKAGE/$opt_file/g;
-  s/$tmpscript/$opt_file/g;
+  s/VERSION/$version/g;
+  s/PACKAGE/$project/g;
+
+  my $i = 0;
+  foreach my $tmpfile (@tmpfiles) {
+    my $file = $files[$i];
+    s/$tmpfile/$file/g;
+    $i++;
+  };# foreach
   print OUT;
 };# while
 close(OUT);
 close(IN);
-system("mv $opt_project.po.tmp $opt_project.po");
+system("mv $project.po.tmp $project.po");
 
 foreach my $language (@languages)
 {
-  my $po = "${opt_project}_$language.po";
+  my $po = "${project}_$language.po";
   my $po_old = "$po.old";
   my $old_po = 0;
   if(-f $po)
@@ -83,7 +100,7 @@ foreach my $language (@languages)
     system("mv $po $po_old");
     $old_po = 1;
   };
-  system("msginit --no-translator -l $language -i $opt_project.po");
+  system("msginit --no-translator -l $language -i $project.po");
   system("mv $language.po $po");
   if($old_po == 1)
   {
@@ -92,7 +109,8 @@ foreach my $language (@languages)
   };
 
   system("mkdir -p $language/LC_MESSAGES");
-  system("msgfmt -o $language/LC_MESSAGES/$opt_project.mo $po");
+  system("msgfmt -o $language/LC_MESSAGES/$project.mo $po");
 };# foreach $language
 
-unlink $tmpscript
+# vim:ai sw=2
+
