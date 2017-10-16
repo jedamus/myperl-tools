@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
-# modifiziert Montag, 16. Oktober 2017 09:43 von Leander Jedamus
+# modifiziert Montag, 16. Oktober 2017 18:20 von Leander Jedamus
 # modifiziert Montag, 17. August 2015 11:21 von Leander Jedamus
 # modifiziert Mittwoch, 22. Juli 2015 17:23 von Leander Jedamus
 # modifiziert Dienstag, 23. Juni 2015 16:04 von Leander Jedamus
@@ -38,8 +38,8 @@ my $tmpdir = tempdir( CLEANUP => 1 );
 foreach my $file (@files) {
 
   my ($fh, $tmpfile) = tempfile( DIR => $tmpdir );
-  (my $endung = $file) =~ s/.*(\..*)/$1/;
-  $tmpfile .= $endung;
+  (my $suffix = $file) =~ s/.*(\..*)/$1/;
+  $tmpfile .= $suffix;
   push(@tmpfiles,$tmpfile);
   
   open(SCRIPT,$file);
