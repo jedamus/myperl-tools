@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
+# modifiziert Montag, 05. März 2018 16:16 von Leander Jedamus
 # modifiziert Freitag, 13. Oktober 2017 15:48 von Leander Jedamus
 # modifiziert Mittwoch, 11. Oktober 2017 18:39 von Leander Jedamus
 # modifiziert Montag, 10. Oktober 2016 13:46 von Leander Jedamus
@@ -56,6 +57,25 @@ sub convert {
   return $str;
 };# sub convert
 
+sub convert2 {
+  my ($str) = @_;
+
+  my $IN  = "/tmp/$domain.convert.$$.in";
+  my $OUT = "/tmp/$domain.convert.$$.out";
+
+  open(IN,">$IN");
+  print IN $str;
+  close(IN);
+  system "iconv -f iso-8859-1 -t latin1 <$IN >$OUT";
+  unlink $IN;
+  open(OUT,$OUT);
+  $str = <OUT>;
+  chomp($str);
+  close(OUT);
+  unlink $OUT;
+  return $str;
+};# sub convert
+
 my $tmpfile = "/tmp/$domain.$$.out";
 (my $username) = split(',',(getpwuid($<))[6]);
 
@@ -75,8 +95,8 @@ foreach my $file (@ARGV)
 
   $basename = convert($basename);
   $file = convert($file);
-  my $filetime = strftime("%a, %d.%m.%Y %H:%M",localtime((stat($file))[9]));
-  my $time = convert(strftime("%A, %d. %B %Y",localtime()));
+  my $filetime = convert2(strftime("%a, %d.%m.%Y %H:%M",localtime((stat($file))[9])));
+  my $time = convert2(strftime("%A, %d. %B %Y",localtime()));
   my $header = convert(sprintf(_("printed by %s"),$username));
   
   system "a2ps",
