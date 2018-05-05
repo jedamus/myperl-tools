@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
-# modifiziert Samstag, 05. Mai 2018 08:54 von Leander Jedamus
+# modifiziert Samstag, 05. Mai 2018 16:10 von Leander Jedamus
 # modifiziert Montag, 05. März 2018 16:16 von Leander Jedamus
 # modifiziert Freitag, 13. Oktober 2017 15:48 von Leander Jedamus
 # modifiziert Mittwoch, 11. Oktober 2017 18:39 von Leander Jedamus
@@ -92,7 +92,20 @@ foreach my $file (@ARGV)
 
   (my $basename = $file) =~ s/.*\/(.*)$/$1/;
 
-  my $filetmp = "/tmp/$basename.ps";
+  my $filetmp;
+
+  if ( $OS eq "Linux" )
+  {
+    $filetmp = "$HOME/print/$opt_P/$basename.ps";
+  }
+  elsif ( $OS eq "MacOS" )
+  {
+    $filetmp = "/tmp/$basename.ps";
+  }
+  else
+  {
+    print "unkown OS-Type!\n";
+  };
 
   $basename = convert($basename);
   $file = convert($file);
@@ -120,9 +133,9 @@ foreach my $file (@ARGV)
 
   if ( $OS eq "Linux" )
   {
-    my $filetmppdf = "$HOME/print/$basename.pdf";
+    #my $filetmppdf = "$HOME/print/$basename.pdf";
     #print "OS = $OS\n";
-    system "ps2pdf","-sPAPERSIZE=a4",$filetmp,$filetmppdf;
+    #system "ps2pdf","-sPAPERSIZE=a4",$filetmp,$filetmppdf;
     #system "lpr","-P",$opt_P,$filetmppdf;
     #system "evince",$filetmppdf;
     #system "evince",$filetmp;
@@ -133,15 +146,14 @@ foreach my $file (@ARGV)
     #print "OS = $OS\n";
     #print $filetmp,"\n";
     system "lpr","-l","-P",$opt_P,$filetmp;
+    unlink $filetmp;
   }
   else
   {
     print "unkown OS-Type!\n";
   };
-  unlink $filetmp;
 };# foreach
 
 unlink $tmpfile;
-
 # vim: ai sw=2
 
