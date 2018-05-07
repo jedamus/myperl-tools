@@ -1,27 +1,27 @@
 # a2ps.pl.
-# Copyright (C) 2012 Leander Jedamus
+# Copyright (C) 2018 Leander Jedamus
 # This file is distributed under the same license as the a2ps.pl package.
-# ljedamus@gmail.com, 2012.
+# ljedamus@testmail.com, 2018.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: a2ps.pl 1.9\n"
+"Project-Id-Version: a2ps.pl 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-14 13:56+0200\n"
+"POT-Creation-Date: 2018-05-07 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Leander Jedamus <ljedamus@gmail.com>\n"
-"Language-Team: Leander Jedamus <ljedamus@gmail.com>\n"
+"Last-Translator: Leander Jedamus <ljedamus@testmail.com>\n"
+"Language-Team: Leander Jedamus <ljedamus@testmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: a2ps.pl:73
-msgid "page $p./$p>"
-msgstr ""
-
-#: a2ps.pl:76
+#: a2ps.pl:116
 #, perl-format
 msgid "printed by %s"
+msgstr ""
+
+#: a2ps.pl:129
+msgid "page $p./$p>"
 msgstr ""
