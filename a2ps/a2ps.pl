@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
+# modifiziert Montag, 07. Mai 2018 20:47 von Leander Jedamus
 # modifiziert Samstag, 05. Mai 2018 16:10 von Leander Jedamus
 # modifiziert Montag, 05. März 2018 16:16 von Leander Jedamus
 # modifiziert Freitag, 13. Oktober 2017 15:48 von Leander Jedamus
@@ -30,6 +31,7 @@ use vars qw($opt_P);
 use Getopt::Long;
 
 my $HOME = $ENV{"HOME"};
+$ENV{"PATH"} = "/usr/local/bin:/usr/bin:/bin";
 my $OS = "unknown";
 if ("$^O" eq "linux") { $OS="Linux" };
 if ("$^O" eq "darwin") { $OS="MacOS" };
