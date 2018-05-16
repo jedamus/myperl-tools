@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
+# modifiziert Mittwoch, 16. Mai 2018 15:15 von Leander Jedamus
 # modifiziert Montag, 07. Mai 2018 20:47 von Leander Jedamus
 # modifiziert Samstag, 05. Mai 2018 16:10 von Leander Jedamus
 # modifiziert Montag, 05. März 2018 16:16 von Leander Jedamus
@@ -83,7 +84,14 @@ sub convert2 {
 my $tmpfile = "/tmp/$domain.$$.out";
 (my $username) = split(',',(getpwuid($<))[6]);
 
-$opt_P = "laserjet";
+if ( $OS eq "Linux" )
+{
+  $opt_P = "laserjet";
+}
+elsif ( $OS eq "MacOS" )
+{
+  $opt_P = "fritzbox_laserjet";
+};
 
 &GetOptions('P:s');
 
@@ -157,5 +165,6 @@ foreach my $file (@ARGV)
 };# foreach
 
 unlink $tmpfile;
+
 # vim: ai sw=2
 
