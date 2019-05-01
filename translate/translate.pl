@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
-# modifiziert Mittwoch, 01. Mai 2019 01:48 von Leander Jedamus
+# modifiziert Mittwoch, 01. Mai 2019 02:33 von Leander Jedamus
 # modifiziert Montag, 16. Oktober 2017 18:20 von Leander Jedamus
 # modifiziert Montag, 17. August 2015 11:21 von Leander Jedamus
 # modifiziert Mittwoch, 22. Juli 2015 17:23 von Leander Jedamus
@@ -19,7 +19,7 @@ use File::Temp qw/ tempfile tempdir /;
 use Getopt::Long;
 
 my $author = "Leander Jedamus";
-my $email = "ljedamus\@testmail.com";
+my $email = "ljedamus\@web.de";
 my $year = `date +'%Y'`;
 chomp $year;
 my $date = `date +'%Y-%m-%d %H:%M%z'`;
@@ -80,7 +80,9 @@ while(<IN>)
   s/CHARSET/$charset/g;
   s/VERSION/$version/g;
   s/PACKAGE/$project/g;
-  s/YEAR-MO-DA HO:MI+ZONE/$date/g;
+  s/YEAR-MO-DA HO:MI\+ZONE/$date/g;
+  s/Language: /Language: @languages/g;
+  s/Report-Msgid-Bugs-To: /Report-Msgid-Bugs-To: $author <$email>/g;
 
   my $i = 0;
   foreach my $tmpfile (@tmpfiles) {
@@ -92,6 +94,7 @@ while(<IN>)
 };# while
 close(OUT);
 close(IN);
+
 system("mv $project.po.tmp $project.po");
 
 foreach my $language (@languages)
