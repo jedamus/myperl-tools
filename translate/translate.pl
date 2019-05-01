@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
+# modifiziert Mittwoch, 01. Mai 2019 01:48 von Leander Jedamus
 # modifiziert Montag, 16. Oktober 2017 18:20 von Leander Jedamus
 # modifiziert Montag, 17. August 2015 11:21 von Leander Jedamus
 # modifiziert Mittwoch, 22. Juli 2015 17:23 von Leander Jedamus
@@ -21,6 +22,8 @@ my $author = "Leander Jedamus";
 my $email = "ljedamus\@testmail.com";
 my $year = `date +'%Y'`;
 chomp $year;
+my $date = `date +'%Y-%m-%d %H:%M%z'`;
+chomp $date;
 my $transdir = "translate";
 my $charset = "UTF-8";
 #my $charset = "ISO-8859-1";
@@ -77,6 +80,7 @@ while(<IN>)
   s/CHARSET/$charset/g;
   s/VERSION/$version/g;
   s/PACKAGE/$project/g;
+  s/YEAR-MO-DA HO:MI+ZONE/$date/g;
 
   my $i = 0;
   foreach my $tmpfile (@tmpfiles) {
