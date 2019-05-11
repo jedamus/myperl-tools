@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
+# modifiziert Samstag, 11. Mai 2019 04:45 von Leander Jedamus
 # modifiziert Mittwoch, 01. Mai 2019 02:33 von Leander Jedamus
 # modifiziert Montag, 16. Oktober 2017 18:20 von Leander Jedamus
 # modifiziert Montag, 17. August 2015 11:21 von Leander Jedamus
@@ -40,20 +41,26 @@ my $tmpdir = tempdir( CLEANUP => 1 );
 
 foreach my $file (@files) {
 
-  my ($fh, $tmpfile) = tempfile( DIR => $tmpdir );
-  (my $suffix = $file) =~ s/.*(\..*)/$1/;
-  $tmpfile .= $suffix;
-  push(@tmpfiles,$tmpfile);
-  
-  open(SCRIPT,$file);
-  open(TMPSCRIPT,">$tmpfile");
-  while(<SCRIPT>)
+  if(-f $file)
   {
-    s/_[(]/gettext(/g;
-    print TMPSCRIPT;
-  };# while <SCRIPT>
-  close(TMPSCRIPT);
-  close(SCRIPT);
+    my ($fh, $tmpfile) = tempfile( DIR => $tmpdir );
+    (my $suffix = $file) =~ s/.*(\..*)/$1/;
+    $tmpfile .= $suffix;
+    push(@tmpfiles,$tmpfile);
+    
+    open(SCRIPT,$file);
+    open(TMPSCRIPT,">$tmpfile");
+    while(<SCRIPT>)
+    {
+      s/_[(]/gettext(/g;
+      print TMPSCRIPT;
+    };# while <SCRIPT>
+    close(TMPSCRIPT);
+    close(SCRIPT);
+  } else {
+    print("file $file does not exist!\n");
+    exit(1);
+  };# else
 };# foreach
 
 my $filelist;
