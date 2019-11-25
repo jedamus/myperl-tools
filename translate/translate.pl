@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
+# modifiziert Montag, 25. November 2019 11:58 von Leander Jedamus
 # modifiziert Samstag, 11. Mai 2019 04:45 von Leander Jedamus
 # modifiziert Mittwoch, 01. Mai 2019 02:33 von Leander Jedamus
 # modifiziert Montag, 16. Oktober 2017 18:20 von Leander Jedamus
@@ -35,7 +36,7 @@ my @files;
 my $project = "mycopy.pl";
 my $version = "1.0";
 
-&GetOptions('file=s' => \@files,'project=s' => \$project,'version=s' => \$version);
+&GetOptions('file=s' => \@files,'project=s' => \$project,'version=s' => \$version, 'dir=s' => \$transdir);
 
 my $tmpdir = tempdir( CLEANUP => 1 );
 
