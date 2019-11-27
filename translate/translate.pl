@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
+# modifiziert Mittwoch, 27. November 2019 08:01 von Leander Jedamus
 # modifiziert Dienstag, 26. November 2019 16:01 von Leander Jedamus
 # modifiziert Montag, 25. November 2019 11:58 von Leander Jedamus
 # modifiziert Samstag, 11. Mai 2019 04:45 von Leander Jedamus
@@ -30,30 +31,53 @@ chomp $date;
 my $charset = "UTF-8";
 #my $charset = "ISO-8859-1";
 my @tmpfiles;
+my $conf_file1 = "POTFILES.in";
+my $conf_file2 = "LINGUAS";
 
-
-sub get_it {
+sub check_file
+{
   my $file = shift;
-  my $lines = "";
-  my @result = ();
-  open(FILE,$file);
-  while(<FILE>)
-  {
-    if(/^#/) { next };
-    $lines .= $_;
-  };# while <FILE>
-  close(FILE);
-  $_ = $lines;
-  while($_) {
-    /\W*([\w\/\.]+)\W+/;
-    # print $1,"\n";
-    push(@result,$1);
-    $_ = $';
-  };
-  return(@result);
-};# sub get_it
+  my $ret = 0;
 
-my @files;
+  if(-r $file)
+  {
+    $ret = 1;
+  } # if -r $file
+  else
+  {
+    print("File $file not readable.\n");
+    exit(-1);
+  };# else -r $file
+  return($ret);
+};# check_file
+
+sub read_conf
+{
+  my $file = shift;
+  my @result = @_;
+  my $lines = "";
+
+  if(check_file($file))
+  {
+    open(FILE,$file);
+    while(<FILE>)
+    {
+      if(/^#/) { next };
+      $lines .= $_;
+    };# while <FILE>
+    close(FILE);
+    $_ = $lines;
+    while($_) {
+      /\W*([\w\/\.]+)\W+/;
+      # print $1,"\n";
+      push(@result,$1);
+      $_ = $';
+    };# while $_
+  };# if check_file $file
+  return(@result);
+};# sub read_conf
+
+my @files = ();
 my $project = "mycopy.pl";
 my $version = "1.0";
 my $transdir = "translate";
@@ -64,21 +88,18 @@ my @languages = ("de","en");
 
 my $tmpdir = tempdir( CLEANUP => 1 );
 
-if($n) {
-  my $file = $transdir . "/POTFILES.in";
-  if(-f $file) {
-    @files = get_it($file);
-  };# if -f $file
-  $file = $transdir . "/LINGUAS";
-  if(-f $file) {
-    @languages = get_it($file);
-  };# if -f $file
+if($n)
+{
+  my $file = $transdir . "/" . $conf_file1;
+  @files = read_conf($file,@files);
+  $file = $transdir . "/" . $conf_file2;
+  @languages = read_conf($file,());
 };# if $n
 
 if(@files) {
   foreach my $file (@files) {
 
-    if(-f $file)
+    if(check_file($file))
     {
       my ($fh, $tmpfile) = tempfile( DIR => $tmpdir );
       (my $suffix = $file) =~ s/.*(\..*)/$1/;
@@ -106,7 +127,7 @@ if(@files) {
   #system("rm -rf $transdir");
   system("mkdir -p $transdir");
 
-  if(-f "$transdir/$project.po")
+  if(-r "$transdir/$project.po")
   {
     system("mv $transdir/$project.po $transdir/$project.po.old");
   };
@@ -146,7 +167,7 @@ if(@files) {
     my $po = "${project}_$language.po";
     my $po_old = "$po.old";
     my $old_po = 0;
-    if(-f $po)
+    if(-r $po)
     {
       system("mv $po $po_old");
       $old_po = 1;
