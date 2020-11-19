@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:32 (C) 2012 by Leander Jedamus
+# modifiziert Donnerstag, 19. November 2020 09:26 von Leander Jedamus
 # modifiziert Mittwoch, 26. August 2015 12:59 von Leander Jedamus
 # modifiziert Dienstag, 14. Juli 2015 13:27 von Leander Jedamus
 # modifiziert Dienstag, 23. Juni 2015 14:59 von Leander Jedamus
@@ -98,7 +99,7 @@ use FindBin '$Bin';
 use File::Spec;
 
 my $domain = "mycopy.pl";
-bindtextdomain($domain,File::Spec->catfile($Bin,"translate"));
+bindtextdomain($domain,File::Spec->catfile($Bin,"locale"));
 textdomain($domain);
 bind_textdomain_codeset($domain,"UTF-8");
 sub _ ($) { &gettext; }

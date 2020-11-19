@@ -11,7 +11,7 @@ msgstr ""
 "PO-Revision-Date: 2013-02-16 16:36+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: de\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,9 +19,12 @@ msgstr ""
 
 #: a2ps.pl:116
 #, perl-format
-msgid "printed by %s"
-msgstr "Gedruckt von %s"
+msgid "Printed by %s"
+msgstr "Printed by %s"
 
 #: a2ps.pl:129
 msgid "page $p./$p>"
-msgstr "Seite $p. von $p>"
+msgstr "page $p./$p>"
+
+#~ msgid "page"
+#~ msgstr "page"

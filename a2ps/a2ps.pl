@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
+# modifiziert Donnerstag, 19. November 2020 09:23 von Leander Jedamus
 # modifiziert Mittwoch, 16. Mai 2018 15:15 von Leander Jedamus
 # modifiziert Montag, 07. Mai 2018 20:47 von Leander Jedamus
 # modifiziert Samstag, 05. Mai 2018 16:10 von Leander Jedamus
@@ -38,7 +39,7 @@ if ("$^O" eq "linux") { $OS="Linux" };
 if ("$^O" eq "darwin") { $OS="MacOS" };
 
 my $domain = "a2ps.pl";
-bindtextdomain($domain,File::Spec->catfile($Bin,"translate"));
+bindtextdomain($domain,File::Spec->catfile($Bin,"locale"));
 textdomain($domain);
 bind_textdomain_codeset($domain,"ISO-8859-1");
 sub _ ($) { &gettext; }
@@ -121,7 +122,7 @@ foreach my $file (@ARGV)
   $file = convert($file);
   my $filetime = convert2(strftime("%a, %d.%m.%Y %H:%M",localtime((stat($file))[9])));
   my $time = convert2(strftime("%A, %d. %B %Y",localtime()));
-  my $header = convert(sprintf(_("printed by %s"),$username));
+  my $header = convert(sprintf(_("Printed by %s"),$username));
   
   system "a2ps",
 	 "--margin=0",

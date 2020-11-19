@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
+# modifiziert Donnerstag, 19. November 2020 09:22 von Leander Jedamus
 # modifiziert Mittwoch, 27. November 2019 08:01 von Leander Jedamus
 # modifiziert Dienstag, 26. November 2019 16:01 von Leander Jedamus
 # modifiziert Montag, 25. November 2019 11:58 von Leander Jedamus
@@ -80,7 +81,7 @@ sub read_conf
 my @files = ();
 my $project = "mycopy.pl";
 my $version = "1.0";
-my $transdir = "translate";
+my $transdir = "locale";
 my $n = 0;
 my @languages = ("de","en");
 

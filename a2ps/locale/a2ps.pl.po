@@ -1,0 +1,27 @@
+# a2ps.pl.
+# Copyright (C) 2020 Leander Jedamus
+# This file is distributed under the same license as the a2ps.pl package.
+# ljedamus@web.de, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: a2ps.pl 1.0\n"
+"Report-Msgid-Bugs-To: Leander Jedamus <ljedamus@web.de>\n"
+"POT-Creation-Date: 2020-11-19 09:24+0100\n"
+"PO-Revision-Date: 2020-11-19 09:24+0100\n"
+"Last-Translator: Leander Jedamus <ljedamus@web.de>\n"
+"Language-Team: Leander Jedamus <ljedamus@web.de>\n"
+"Language: de en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: a2ps.pl:125
+#, perl-format
+msgid "Printed by %s"
+msgstr ""
+
+#: a2ps.pl:138
+msgid "page $p./$p>"
+msgstr ""
