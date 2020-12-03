@@ -7,12 +7,12 @@ Install translate:
 cp -p translate/translate.pl ~/bin
 
 Install a2ps:
-cp -Rvp a2ps/a2ps.pl a2ps/translate ~/bin
+cp -Rvp a2ps/a2ps.pl a2ps/locale ~/bin
 cd ~/bin
 ln -s a2ps.pl a2ps
 
 Install myconf:
-cp -Rvp myconf/myconf.pl myconf/translate ~/bin
+cp -Rvp myconf/myconf.pl myconf/locale ~/bin
 
 Install mycopy:
-cp -Rvp mycopy/mycopy.pl mycopy/translate ~/bin
+cp -Rvp mycopy/mycopy.pl mycopy/locale ~/bin
