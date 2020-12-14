@@ -3,16 +3,35 @@ My Perl-Tools
 
 Just 2c from me for the tools I use every day...
 
+Install all:
+```
+sh ./install.sh
+```
+
 Install translate:
-cp -p translate/translate.pl ~/bin
+```
+cd translate
+sh ./install.sh
+cd ..
+```
 
 Install a2ps:
-cp -Rvp a2ps/a2ps.pl a2ps/locale ~/bin
-cd ~/bin
-ln -s a2ps.pl a2ps
+```
+cd a2ps
+sh ./install.sh
+cd ..
+```
 
 Install myconf:
-cp -Rvp myconf/myconf.pl myconf/locale ~/bin
+```
+cd myconf
+sh ./install.sh
+cd ..
+```
 
 Install mycopy:
-cp -Rvp mycopy/mycopy.pl mycopy/locale ~/bin
+```
+cd mycopy
+sh ./install.sh
+cd ..
+```
