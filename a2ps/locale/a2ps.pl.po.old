@@ -1,27 +1,35 @@
 # a2ps.pl.
-# Copyright (C) 2018 Leander Jedamus
+# Copyright (C) 2020 Leander Jedamus
 # This file is distributed under the same license as the a2ps.pl package.
-# ljedamus@testmail.com, 2018.
+# ljedamus@web.de, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: a2ps.pl 1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 22:50+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Leander Jedamus <ljedamus@testmail.com>\n"
-"Language-Team: Leander Jedamus <ljedamus@testmail.com>\n"
-"Language: \n"
+"Report-Msgid-Bugs-To: Leander Jedamus <ljedamus@web.de>\n"
+"POT-Creation-Date: 2020-12-23 09:39+0100\n"
+"PO-Revision-Date: 2020-12-23 09:39+0100\n"
+"Last-Translator: Leander Jedamus <ljedamus@web.de>\n"
+"Language-Team: Leander Jedamus <ljedamus@web.de>\n"
+"Language: de en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: a2ps.pl:116
-#, perl-format
-msgid "printed by %s"
+#: a2ps.pl:124
+msgid "%b %d, %y %k:%M"
 msgstr ""
 
-#: a2ps.pl:129
+#: a2ps.pl:125
+msgid "%A %B %d %Y"
+msgstr ""
+
+#: a2ps.pl:126
+#, perl-format
+msgid "Printed by %s"
+msgstr ""
+
+#: a2ps.pl:139
 msgid "page $p./$p>"
 msgstr ""

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: a2ps.pl 1.0\n"
 "Report-Msgid-Bugs-To: Leander Jedamus <ljedamus@web.de>\n"
-"POT-Creation-Date: 2020-11-19 09:24+0100\n"
-"PO-Revision-Date: 2020-11-19 09:24+0100\n"
+"POT-Creation-Date: 2020-12-23 09:41+0100\n"
+"PO-Revision-Date: 2020-12-23 09:41+0100\n"
 "Last-Translator: Leander Jedamus <ljedamus@web.de>\n"
 "Language-Team: Leander Jedamus <ljedamus@web.de>\n"
 "Language: de en\n"
@@ -17,11 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: a2ps.pl:124
+msgid "%b %d, %y %k:%M"
+msgstr ""
+
 #: a2ps.pl:125
+msgid "%A %B %d %Y"
+msgstr ""
+
+#: a2ps.pl:126
 #, perl-format
 msgid "Printed by %s"
 msgstr ""
 
-#: a2ps.pl:138
+#: a2ps.pl:139
 msgid "page $p./$p>"
 msgstr ""

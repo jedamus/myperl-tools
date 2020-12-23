@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: a2ps.pl 1.9\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 22:50+0200\n"
+"Report-Msgid-Bugs-To: Leander Jedamus <ljedamus@web.de>\n"
+"POT-Creation-Date: 2020-12-23 09:39+0100\n"
 "PO-Revision-Date: 2013-02-16 16:36+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,12 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: a2ps.pl:116
+#: a2ps.pl:124
+msgid "%b %d, %y %k:%M"
+msgstr "%b %d, %y %k:%M"
+
+#: a2ps.pl:125
+msgid "%A %B %d %Y"
+msgstr "%A %B %d %Y"
+
+#: a2ps.pl:126
 #, perl-format
 msgid "Printed by %s"
 msgstr "Printed by %s"
 
-#: a2ps.pl:129
+#: a2ps.pl:139
 msgid "page $p./$p>"
 msgstr "page $p./$p>"
 
