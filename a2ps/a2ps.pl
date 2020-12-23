@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:27 (C) 2012 by Leander Jedamus
+# modifiziert Wednesday, 23. December 2020 09:46 von Leander Jedamus
+# modifiziert Mittwoch, 23. Dezember 2020 09:42 von Leander Jedamus
 # modifiziert Donnerstag, 19. November 2020 09:23 von Leander Jedamus
 # modifiziert Mittwoch, 16. Mai 2018 15:15 von Leander Jedamus
 # modifiziert Montag, 07. Mai 2018 20:47 von Leander Jedamus
@@ -120,8 +122,8 @@ foreach my $file (@ARGV)
 
   $basename = convert($basename);
   $file = convert($file);
-  my $filetime = convert2(strftime("%a, %d.%m.%Y %H:%M",localtime((stat($file))[9])));
-  my $time = convert2(strftime("%A, %d. %B %Y",localtime()));
+  my $filetime = convert2(strftime(_("%b %d, %y %k:%M"),localtime((stat($file))[9])));
+  my $time = convert2(strftime(_("%A %B %d %Y"),localtime()));
   my $header = convert(sprintf(_("Printed by %s"),$username));
   
   system "a2ps",
