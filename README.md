@@ -3,13 +3,14 @@ My Perl-Tools
 
 Just 2c from me for the tools I use every day...
 
+## Getting started
+
 Perhaps you have to do this first:
 
 ```
-sudo apt install libdbd-mysql-perl liblocale-gettext-perl libpoe-loop-tk-perl
+sudo apt install a2ps libdbd-mysql-perl liblocale-gettext-perl \
+                 libpoe-loop-tk-perl
 ```
-
-## Getting started
 
 Install all:
 
@@ -17,7 +18,7 @@ Install all:
 sh ./install.sh
 ```
 
-Install translate:
+Install only translate:
 
 ```
 cd translate
@@ -25,7 +26,7 @@ sh ./install.sh
 cd ..
 ```
 
-Install a2ps:
+Install only a2ps:
 
 ```
 cd a2ps
@@ -33,7 +34,7 @@ sh ./install.sh
 cd ..
 ```
 
-Install myconf:
+Install only myconf:
 
 ```
 cd myconf
@@ -41,7 +42,7 @@ sh ./install.sh
 cd ..
 ```
 
-Install mycopy:
+Install only mycopy:
 
 ```
 cd mycopy
