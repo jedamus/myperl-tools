@@ -3,6 +3,12 @@ My Perl-Tools
 
 Just 2c from me for the tools I use every day...
 
+Perhaps you have to do this first:
+
+```
+sudo apt install libdbd-mysql-perl liblocale-gettext-perl libpoe-loop-tk-perl
+```
+
 ## Getting started
 
 Install all:
