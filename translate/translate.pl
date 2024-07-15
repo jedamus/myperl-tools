@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
+# modifiziert Montag, 15. Juli 2024 18:57 von Leander Jedamus
 # modifiziert Donnerstag, 19. November 2020 09:22 von Leander Jedamus
 # modifiziert Mittwoch, 27. November 2019 08:01 von Leander Jedamus
 # modifiziert Dienstag, 26. November 2019 16:01 von Leander Jedamus
@@ -82,20 +83,20 @@ my @files = ();
 my $project = "mycopy.pl";
 my $version = "1.0";
 my $transdir = "locale";
-my $n = 0;
+my $read_conf = 0;
 my @languages = ("de","en");
 
-&GetOptions('file=s' => \@files,'project=s' => \$project,'version=s' => \$version, 'dir=s' => \$transdir, 'n' => \$n);
+&GetOptions('file=s' => \@files,'project=s' => \$project,'version=s' => \$version, 'dir=s' => \$transdir, 'read_config' => \$read_config);
 
 my $tmpdir = tempdir( CLEANUP => 1 );
 
-if($n)
+if($read_config)
 {
   my $file = $transdir . "/" . $conf_file1;
   @files = read_conf($file,@files);
   $file = $transdir . "/" . $conf_file2;
   @languages = read_conf($file,());
-};# if $n
+};# if $read_config
 
 if(@files) {
   foreach my $file (@files) {
