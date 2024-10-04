@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
-# modifiziert Freitag, 04. Oktober 2024 18:04 von Leander Jedamus
+# modifiziert Freitag, 04. Oktober 2024 23:43 von Leander Jedamus
 # modifiziert Mittwoch, 14. August 2024 10:58 von Leander Jedamus
 # modifiziert Montag, 15. Juli 2024 18:57 von Leander Jedamus
 # modifiziert Donnerstag, 19. November 2020 09:22 von Leander Jedamus
@@ -90,15 +90,14 @@ my $read_config = 0;
 my @languages;
 if($ENV{TRANSLATE}) {
   @languages = ();
-  my $mein = $ENV{TRANSLATE};
-  $_ = $mein . "\n";
+  $_ = $ENV{TRANSLATE} . " ";
   while($_) {
     /(\w+)\W+/;
     # print "$1\n";
     push(@languages,$1); 
     $_ = $';
   }
-  # print "@languages\n";
+  # print "debug: @languages\n";
 } else {
   @languages = ("de","en");
 }
