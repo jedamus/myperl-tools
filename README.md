@@ -26,6 +26,11 @@ sh ./install.sh
 cd ..
 ```
 
+set environment variable TRANSLATE to the langiages you want to translate to:
+```
+export TRANSLATE="de en fr it"
+```
+
 Install only a2ps:
 
 ```
