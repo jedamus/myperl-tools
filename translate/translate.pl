@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # created Mittwoch, 05. Dezember 2012 06:34 (C) 2012 by Leander Jedamus
+# modifiziert Samstag, 05. Oktober 2024 08:00 von Leander Jedamus
 # modifiziert Freitag, 04. Oktober 2024 23:43 von Leander Jedamus
 # modifiziert Mittwoch, 14. August 2024 10:58 von Leander Jedamus
 # modifiziert Montag, 15. Juli 2024 18:57 von Leander Jedamus
@@ -87,20 +88,21 @@ my $version = "1.0";
 my $transdir = "locale";
 my $read_config = 0;
 
-my @languages;
-if($ENV{TRANSLATE}) {
+my @languages = ();
+my $translate = $ENV{TRANSLATE};
+if($translate) {
   @languages = ();
-  $_ = $ENV{TRANSLATE} . " ";
+  $_ = $translate . " ";
   while($_) {
     /(\w+)\W+/;
     # print "$1\n";
     push(@languages,$1); 
     $_ = $';
   }
-  # print "debug: @languages\n";
 } else {
   @languages = ("de","en");
 }
+# print "debug: @languages\n";
 
 &GetOptions('file=s' => \@files,'project=s' => \$project,'version=s' => \$version, 'dir=s' => \$transdir, 'read_config' => \$read_config);
 
